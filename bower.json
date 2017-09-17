@@ -1,0 +1,16 @@
+{
+  "name": "poketeams",
+  "homepage": "https://github.com/bedrickprokop/poketeams",
+  "authors": [
+    "Bedrick Prokop <bedrick.prokop@gmail.com>"
+  ],
+  "description": "Web Project Java/AngularJs to manage pokemon teams",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "angularjs#1.4.9",
+    "angular-resource": "1.4.9",
+    "angular-route": "1.4.9",
+    "bootstrap": "3.3.6"
+  }
+}
