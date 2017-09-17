@@ -18,7 +18,7 @@ public class Creature {
     private String weight;
     private String height;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "creature", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Move> moveList;
 
     @JsonIgnore
