@@ -2,8 +2,13 @@ var app = angular.module('app', ['ngRoute', 'ngResource']);
 
 app.config(function ($routeProvider) {
     $routeProvider
-        .when('/coach', {
-            templateUrl: '/views/coach.html',
+        .when('/', {
+            templateUrl: '/views/coach/list.html',
+            controller: 'coachController',
+            service: 'coachService'
+        })
+        .when('/coachdetail/:coachId', {
+            templateUrl: '/views/coach/detail.html',
             controller: 'coachController'
         })
         .when('/team', {

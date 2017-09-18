@@ -14,22 +14,21 @@
 </head>
 
 <body>
-<h2>Poketeams app manager</h2>
+<div class="container">
+    <div class="page-header"><h1>Poketeams app manager</h1></div>
 
-<div class="home-section">
-    <ul class="menu-list">
-        <li><a href="#/coach">Coach list</a></li>
-        <li><a href="#/team">Team list</a></li>
-    </ul>
+    <div ng-view></div>
 </div>
-<div ng-view></div>
 
 <script src="modules/angular/angular.min.js"></script>
 <script src="modules/angular-resource/angular-resource.min.js"></script>
 <script src="modules/angular-route/angular-route.min.js"></script>
 
 <script src="js/app.js"></script>
+
 <script src="js/controller/coach-controller.js"></script>
 <script src="js/controller/team-controller.js"></script>
+
+<script src="js/service/coach-service.js"></script>
 </body>
 </html>
