@@ -21,7 +21,6 @@ public class BaseDao<T> {
 
     private Class<T> getGenericTypeClass() {
         try {
-
             Type genericSuperclass = getClass().getGenericSuperclass();
             String className = ((ParameterizedType) genericSuperclass)
                     .getActualTypeArguments()[0].getTypeName();

@@ -1,4 +1,4 @@
-app.controller('coachController', function ($scope, $http, $routeParams, coachService) {
+app.controller('coachController', function ($scope, coachService) {
 
     $scope.headingTitle = "Maintain coaches";
     $scope.emptyMessage = "No items available /:";
@@ -45,6 +45,7 @@ app.controller('coachController', function ($scope, $http, $routeParams, coachSe
 
     $scope.clear = function () {
         $scope.entity = {};
+        $scope.isEditing = false;
     }
 
     $scope.delete = function (entityId) {

@@ -9,6 +9,7 @@
                 <input placeholder="Coach name" type="text" name="name" class="form-control" ng-model="entity.name"
                        required ng-required="true" ng-minlength="3" ng-maxlength="50">
             </div>
+
             <button type="submit" class="btn btn-success">{{!isEditing ? 'Create' : 'Update'}}</button>
             <button type="button" class="btn btn-warning" ng-click="clear()">{{!isEditing ? 'Clear' : 'Cancel'}}
             </button>
@@ -29,7 +30,7 @@
                 <td class="col-md-9">{{item.name}}</td>
 
                 <td class="col-md-3">
-                    <a href="#/team" class="btn btn-warning">Teams</a>
+                    <a href="#/team/{{item.id}}" class="btn btn-warning">Teams</a>
                     <button class="btn btn-info" ng-click="edit(item, true)">Edit</button>
                     <button class="btn btn-danger" ng-click="delete(item.id)">Delete</button>
                 </td>

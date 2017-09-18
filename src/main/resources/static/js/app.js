@@ -7,7 +7,7 @@ app.config(function ($routeProvider) {
             controller: 'coachController',
             service: 'coachService'
         })
-        .when('/team', {
+        .when('/team/:coachId', {
             templateUrl: '/views/team/list.html',
             controller: 'teamController'
         })

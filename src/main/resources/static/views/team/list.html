@@ -1,3 +1,28 @@
+<h3>{{headingTitle}}</h3>
+
+<div class="row">
+
+    <div class="col-sm-12">
+        <form name="form" ng-submit="submit(form.$valid)" novalidate>
+            <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+            <div class="form-group">
+                <input placeholder="Team name" type="text" name="name" class="form-control" ng-model="entity.name"
+                       required ng-required="true" ng-minlength="3" ng-maxlength="50">
+            </div>
+
+            <div class="form-group">
+
+            </div>
+
+            <button type="submit" class="btn btn-success">{{!isEditing ? 'Create' : 'Update'}}</button>
+            <button type="button" class="btn btn-warning" ng-click="clear()">{{!isEditing ? 'Clear' : 'Cancel'}}
+            </button>
+        </form>
+    </div>
+
+</div>
+
+
 <div class="section">
     <h3>{{headingTitle}}</h3>
     <div>
