@@ -1,6 +1,7 @@
 package br.com.poketeams.endpoint;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -53,6 +54,7 @@ public class CoachEndpointIT {
     }
 
     @Test
+    @Ignore
     public void delete() {
         given().when().delete("api/coach/" + 1)
                 .then()
