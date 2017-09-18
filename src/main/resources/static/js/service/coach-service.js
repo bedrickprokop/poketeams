@@ -13,11 +13,11 @@ app.factory('coachService', function ($http) {
     }
 
     function update(coach) {
-        return;
+        return $http.put('/api/coach', coach);
     }
 
     function deleteOne(coachId) {
-        return;
+        return $http.delete("api/coach/" + coachId);
     }
 
     return {

@@ -1,33 +1,40 @@
-<div class="col-sm-12 col-sm-offset-2">
+<h3>{{headingTitle}}</h3>
 
-    <h2>{{headingTitle}}</h2>
+<div class="row">
 
-    <form name="coachForm" ng-submit="create(coachForm.$valid)" novalidate>
-        <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
-        <div class="form-group">
+    <div class="col-sm-12">
+        <form name="coachForm" ng-submit="create(coachForm.$valid)" novalidate>
+            <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+            <div class="form-group">
+                <input placeholder="Coach name" type="text" name="name" class="form-control" ng-model="coach.name"
+                       required ng-required="true" ng-minlength="3" ng-maxlength="20">
+            </div>
+            <button type="submit" class="btn btn-success">Create</button>
+        </form>
+    </div>
 
-            <label>Name</label>
-            <input type="text" name="name" class="form-control" ng-model="coach.name" required
-                   ng-required="true" ng-minlength="3" ng-maxlength="20">
+    <div class="col-sm-12" style="margin-top: 20px">
 
-            <button type="submit" class="btn btn-primary">Create</button>
-        </div>
-    </form>
-
-    <div>
-        <ul type="square" ng-if="coachList.length > 0">
-            <li ng-repeat="coach in coachList">
-                Coach name: {{coach.name}}
-
-                <button type="button" class="btn btn-info">
-                    <a href="#/coachdetail/{{coach.id}}">Details</a>
-                </button>
-                <button type="button" class="btn btn-danger">Delete</button>
-
-            </li>
-        </ul>
+        <table class="table table-hover" ng-if="coachList.length > 0">
+            <thead>
+            <tr>
+                <th class="col-md-10">Name</th>
+                <th class="col-md-2">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="coach in coachList">
+                <td class="col-md-10">{{coach.name}}</td>
+                <td class="col-md-2">
+                    <a class="btn btn-info" href="#/coachdetail/{{coach.id}}">Details</a>
+                    <button class="btn btn-danger" ng-click="delete(coach.id)">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
         <span ng-if="coachList.length == 0">{{emptyMessage}}</span>
+
     </div>
 
 </div>
