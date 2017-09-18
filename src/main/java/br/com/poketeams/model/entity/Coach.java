@@ -17,6 +17,10 @@ public class Coach {
     public Coach() {
     }
 
+    public Coach(String name) {
+        this(name, null);
+    }
+
     public Coach(String name, List<Team> teamList) {
         this(null, name, teamList);
     }
