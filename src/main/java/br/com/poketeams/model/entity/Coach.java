@@ -1,6 +1,9 @@
 package br.com.poketeams.model.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -9,6 +12,11 @@ public class Coach {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    //TODO adicionar mensagem de texto em arquivo de mensagens
+    @NotNull(message = "Name cannot be empty")
+    @Length(min = 3, max = 20, message = "Name should "
+            + "be between 3 to 20 characters")
     private String name;
 
     @OneToMany(mappedBy = "coach", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
