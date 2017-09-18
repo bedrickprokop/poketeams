@@ -3,37 +3,41 @@
 <div class="row">
 
     <div class="col-sm-12">
-        <form name="coachForm" ng-submit="create(coachForm.$valid)" novalidate>
+        <form name="form" ng-submit="submit(form.$valid)" novalidate>
             <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
             <div class="form-group">
-                <input placeholder="Coach name" type="text" name="name" class="form-control" ng-model="coach.name"
-                       required ng-required="true" ng-minlength="3" ng-maxlength="20">
+                <input placeholder="Coach name" type="text" name="name" class="form-control" ng-model="entity.name"
+                       required ng-required="true" ng-minlength="3" ng-maxlength="50">
             </div>
-            <button type="submit" class="btn btn-success">Create</button>
+            <button type="submit" class="btn btn-success">{{!isEditing ? 'Create' : 'Update'}}</button>
+            <button type="button" class="btn btn-warning" ng-click="clear()">{{!isEditing ? 'Clear' : 'Cancel'}}
+            </button>
         </form>
     </div>
 
     <div class="col-sm-12" style="margin-top: 20px">
 
-        <table class="table table-hover" ng-if="coachList.length > 0">
+        <table class="table table-hover" ng-if="entityList.length > 0">
             <thead>
             <tr>
-                <th class="col-md-10">Name</th>
-                <th class="col-md-2">Actions</th>
+                <th class="col-md-9">Name</th>
+                <th class="col-md-3">Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="coach in coachList">
-                <td class="col-md-10">{{coach.name}}</td>
-                <td class="col-md-2">
-                    <a class="btn btn-info" href="#/coachdetail/{{coach.id}}">Details</a>
-                    <button class="btn btn-danger" ng-click="delete(coach.id)">Delete</button>
+            <tr ng-repeat="item in entityList">
+                <td class="col-md-9">{{item.name}}</td>
+
+                <td class="col-md-3">
+                    <a href="#/team" class="btn btn-warning">Teams</a>
+                    <button class="btn btn-info" ng-click="edit(item, true)">Edit</button>
+                    <button class="btn btn-danger" ng-click="delete(item.id)">Delete</button>
                 </td>
             </tr>
             </tbody>
         </table>
 
-        <span ng-if="coachList.length == 0">{{emptyMessage}}</span>
+        <span ng-if="entityList.length == 0">{{emptyMessage}}</span>
 
     </div>
 

@@ -15,8 +15,8 @@ public class Coach {
 
     //TODO adicionar mensagem de texto em arquivo de mensagens
     @NotNull(message = "Name cannot be empty")
-    @Length(min = 3, max = 20, message = "Name should "
-            + "be between 3 to 20 characters")
+    @Length(min = 3, max = 50, message = "Name should "
+            + "be between 3 to 50 characters")
     private String name;
 
     @OneToMany(mappedBy = "coach", fetch = FetchType.EAGER, cascade = CascadeType.ALL)

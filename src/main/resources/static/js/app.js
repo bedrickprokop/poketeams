@@ -7,12 +7,8 @@ app.config(function ($routeProvider) {
             controller: 'coachController',
             service: 'coachService'
         })
-        .when('/coachdetail/:coachId', {
-            templateUrl: '/views/coach/detail.html',
-            controller: 'coachController'
-        })
         .when('/team', {
-            templateUrl: '/views/team.html',
+            templateUrl: '/views/team/list.html',
             controller: 'teamController'
         })
         .otherwise(

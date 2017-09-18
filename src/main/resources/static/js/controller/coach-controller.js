@@ -1,53 +1,73 @@
 app.controller('coachController', function ($scope, $http, $routeParams, coachService) {
 
     $scope.headingTitle = "Maintain coaches";
-    $scope.coachList = [];
-    $scope.coach = {};
     $scope.emptyMessage = "No items available /:";
 
-    var coachId = $routeParams.coachId;
-    if (coachId) {
-        coachService.findOne(coachId).then(function (response) {
-            $scope.coach = response.data;
+    $scope.entity = {};
+    $scope.entityList = [];
+
+    $scope.isEditing = false;
+
+    coachService.findAll().then(
+        function (response) {
+            $scope.entityList = response.data;
         }, function (error) {
             console.log(error);
         });
-    } else {
-        coachService.findAll().then(
-            function (response) {
-                $scope.coachList = response.data;
-            }, function (error) {
-                console.log(error);
-            });
-    }
 
-    $scope.create = function (isValid) {
+    $scope.submit = function (isValid) {
         if (isValid) {
-            coachService.create($scope.coach).then(function (response) {
-                $scope.coachList.push(response.data);
-            }, function (error) {
-                console.log(error);
-            });
-            $scope.coach = {}
+            if (!$scope.isEditing) {
+                coachService.create($scope.entity).then(function (response) {
+                    $scope.entityList.push(response.data);
+                }, function (error) {
+                    console.log(error);
+                });
+            } else {
+                coachService.update($scope.entity).then(function (response) {
+                    var updatedEntity = response.data;
+                    var selectedIndex = findEntityIndex(updatedEntity.id);
+                    $scope.entityList[selectedIndex] = updatedEntity;
+                    $scope.isEditing = false;
+
+                }, function (error) {
+                    console.log(error);
+                })
+            }
+            $scope.clear();
         }
     }
 
-    $scope.delete = function (coachId) {
-        coachService.deleteOne(coachId).then(function (response) {
-            var array = $scope.coachList;
-            var selectedIndex = -1;
-            for (var i = 0, len = array.length; i < len; i++) {
-                if (array[i].id == coachId) {
-                    selectedIndex = i;
-                    break;
-                }
-            }
+    $scope.edit = function (entity, isEditing) {
+        $scope.entity = angular.copy(entity);
+        $scope.isEditing = isEditing;
+    }
+
+    $scope.clear = function () {
+        $scope.entity = {};
+    }
+
+    $scope.delete = function (entityId) {
+        coachService.deleteOne(entityId).then(function (response) {
+            var selectedIndex = findEntityIndex(response.data.id);
             if (selectedIndex > -1) {
-                $scope.coachList.splice(selectedIndex, 1);
+                $scope.entityList.splice(selectedIndex, 1);
             }
         }, function (error) {
             console.log(error);
         });
+    }
+
+    function findEntityIndex(entityId) {
+        var array = $scope.entityList;
+        var selectedIndex = -1;
+        for (var i = 0, len = array.length; i < len; i++) {
+            if (array[i].id == entityId) {
+                selectedIndex = i;
+                break;
+            }
+        }
+        return selectedIndex;
     }
 
 });
