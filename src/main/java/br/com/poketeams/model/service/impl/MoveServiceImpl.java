@@ -23,12 +23,7 @@ public class MoveServiceImpl implements MoveService {
     }
 
     @Override
-    public Move findOne(Long moveId) {
-        return null;
-    }
-
-    @Override
     public List<Move> findAll() {
-        return null;
+        return moveDao.findAll();
     }
 }

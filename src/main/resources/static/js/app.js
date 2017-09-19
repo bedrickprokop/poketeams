@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'ngResource', 'multipleSelect']);
+var app = angular.module('app', ['ngRoute', 'ngResource']);
 
 app.config(function ($routeProvider) {
     $routeProvider

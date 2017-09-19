@@ -70,6 +70,7 @@ public class TeamServiceImpl implements TeamService {
     public Team delete(Long teamId) {
         Team team = teamDao.findOne(teamId);
         if (null != team) {
+            team.setCoach(null);
             return teamDao.delete(team);
         }
         throw new ApplicationException("Entity not found",

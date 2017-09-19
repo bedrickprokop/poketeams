@@ -2,6 +2,7 @@ package br.com.poketeams.config;
 
 import br.com.poketeams.endpoint.CoachEndpoint;
 import br.com.poketeams.endpoint.CreatureEndpoint;
+import br.com.poketeams.endpoint.MoveEndpoint;
 import br.com.poketeams.endpoint.TeamEndpoint;
 import br.com.poketeams.exception.ApplicationExceptionMapper;
 import br.com.poketeams.exception.ValidationExceptionMapper;
@@ -22,7 +23,7 @@ public class JerseyRestConfig extends ResourceConfig {
     }
 
     private void registerControllers() {
-        registerClasses(CoachEndpoint.class, CreatureEndpoint.class, TeamEndpoint.class);
+        registerClasses(CoachEndpoint.class, CreatureEndpoint.class, MoveEndpoint.class, TeamEndpoint.class);
     }
 
     private void registerMappers() {

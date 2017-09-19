@@ -8,7 +8,5 @@ public interface MoveService {
 
     Move create(Move move);
 
-    Move findOne(Long moveId);
-
     List<Move> findAll();
 }

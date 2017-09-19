@@ -11,24 +11,32 @@
             </div>
 
             <div class="form-group">
-                <div ng-class="{'has-error' : form.multipleSelect.$invalid && form.multipleSelect.$dirty,
-                    'has-success' : !form.multipleSelect.$invalid && form.multipleSelect.$dirty}">
+                <label>Choose your creatures</label>
 
-                    <label>Choose your creatures</label>
-                    <multiple-autocomplete ng-model="selectedCreatureList"
-                                           object-property="name"
-                                           suggestions-arr="creatureList"
-                                           name="multipleSelect"
-                                           required="true">
-                    </multiple-autocomplete>
-                    <span ng-show="form.multipleSelect.$invalid && form.multipleSelect.$dirty" class="ng-hide">
-                        <p class="error-msg" ng-show="form.creatureList.$error.required">
-                            Please select something from multiple select field
-                        </p>
-                    </span>
+                <div class="form-group">
+                    <select ng-model="selectedCreature">
+                        <option ng-repeat="creature in creatureList"
+                                ng-selected="selectedCreature.id == creature.id">
+                            {{creature.name}}
+                        </option>
+                    </select>
                 </div>
-
+                <!--<pre>{{selectedCreature | json}}</pre>-->
             </div>
+
+            <div class="form-group">
+                <label>Choose the moves for this creature</label>
+                <div class="form-group">
+                    <select multiple ng-model="selectedMoveList">
+                        <option ng-repeat="move in moveList"
+                                value="{{move}}">
+                            {{move.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-success" ng-click="checkNewCreatureAdded()">Add Creature</button>
 
             <button type="submit" class="btn btn-success">{{!isEditing ? 'Create' : 'Update'}}</button>
             <button type="button" class="btn btn-warning" ng-click="clear()">{{!isEditing ? 'Clear' : 'Cancel'}}
