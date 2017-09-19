@@ -75,24 +75,28 @@ app.controller('teamController', function ($scope, $routeParams, $location, team
     //ng-change="updateMoves()"
 
     $scope.checkNewCreatureAdded = function () {
-        if ($scope.selectedMoveList.length <= 4) {
-            $scope.selectedCreatureList.push($scope.selectedCreature);
+        if ($scope.selectedCreatureList.length < 6) {
+            if ($scope.selectedMoveList.length <= 4) {
+                $scope.selectedCreatureList.push($scope.selectedCreature);
 
-            var creature = angular.copy($scope.selectedCreature);
-            creature.moveList = [];
+                var creature = angular.copy($scope.selectedCreature);
+                creature.moveList = [];
 
-            for (var i = 0, len = $scope.selectedMoveList.length; i < len; i++) {
-                creature.moveList.push($scope.selectedMoveList[i]);
+                for (var i = 0, len = $scope.selectedMoveList.length; i < len; i++) {
+                    creature.moveList.push($scope.selectedMoveList[i]);
+                }
+
+                if (!$scope.entity.creatureList) {
+                    $scope.entity.creatureList = new Array();
+                }
+                $scope.entity.creatureList.push(creature);
+
+                console.log($scope.entity);
+            } else {
+                alert("You can't choose more than 4 moves");
             }
-
-            if (!$scope.entity.creatureList) {
-                $scope.entity.creatureList = new Array();
-            }
-            $scope.entity.creatureList.push(creature);
-
-            console.log($scope.entity);
         } else {
-            alert("You can't choose more than 4 moves");
+            alert("You can't add more than 6 creatures");
         }
     };
 
