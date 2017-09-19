@@ -23,21 +23,11 @@ public class CreatureServiceImpl implements CreatureService {
 
     @Override
     public Creature findOne(Long creatureId) {
-        return null;
+        return creatureDao.findOne(creatureId);
     }
 
     @Override
     public List<Creature> findAll() {
-        return null;
-    }
-
-    @Override
-    public Creature update(Creature creature) {
-        return null;
-    }
-
-    @Override
-    public Creature delete(Long creatureId) {
-        return null;
+        return creatureDao.findAll();
     }
 }

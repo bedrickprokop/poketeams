@@ -31,14 +31,4 @@ public class MoveServiceImpl implements MoveService {
     public List<Move> findAll() {
         return null;
     }
-
-    @Override
-    public Move update(Move move) {
-        return null;
-    }
-
-    @Override
-    public Move delete(Long moveId) {
-        return null;
-    }
 }

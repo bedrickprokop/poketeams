@@ -2,6 +2,7 @@ package br.com.poketeams.service;
 
 import br.com.poketeams.App;
 import br.com.poketeams.config.H2Config;
+import br.com.poketeams.exception.ApplicationException;
 import br.com.poketeams.model.entity.Coach;
 import br.com.poketeams.model.service.CoachService;
 import org.junit.Assert;
@@ -68,13 +69,17 @@ public class CoachServiceTest {
 
     @Test
     public void delete() {
-        coach1 = coachService.create(coach1);
-        long coachId = coach1.getId();
+        Coach coach = coachService.create(coach1);
+        long coachId = coach.getId();
 
-        coachService.delete(coachId);
-        coach1 = coachService.findOne(coach1.getId());
+        coach = coachService.delete(coachId);
 
-        Assert.assertNull(coach1);
+        try {
+            coachService.findOne(coach.getId());
+            Assert.assertFalse(false);
+        } catch (ApplicationException e) {
+            Assert.assertTrue(true);
+        }
     }
 
 }

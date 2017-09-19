@@ -8,9 +8,10 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "angularjs#1.4.9",
+    "angularjs": "1.4.9",
     "angular-resource": "1.4.9",
     "angular-route": "1.4.9",
-    "bootstrap": "3.3.6"
+    "bootstrap": "3.3.6",
+    "angular-multiple-select": "1.1.2"
   }
 }

@@ -11,8 +11,4 @@ public interface CreatureService {
     Creature findOne(Long creatureId);
 
     List<Creature> findAll();
-
-    Creature update(Creature creature);
-
-    Creature delete(Long creatureId);
 }

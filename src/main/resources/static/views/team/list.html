@@ -11,6 +11,22 @@
             </div>
 
             <div class="form-group">
+                <div ng-class="{'has-error' : form.multipleSelect.$invalid && form.multipleSelect.$dirty,
+                    'has-success' : !form.multipleSelect.$invalid && form.multipleSelect.$dirty}">
+
+                    <label>Choose your creatures</label>
+                    <multiple-autocomplete ng-model="selectedCreatureList"
+                                           object-property="name"
+                                           suggestions-arr="creatureList"
+                                           name="multipleSelect"
+                                           required="true">
+                    </multiple-autocomplete>
+                    <span ng-show="form.multipleSelect.$invalid && form.multipleSelect.$dirty" class="ng-hide">
+                        <p class="error-msg" ng-show="form.creatureList.$error.required">
+                            Please select something from multiple select field
+                        </p>
+                    </span>
+                </div>
 
             </div>
 
@@ -20,17 +36,4 @@
         </form>
     </div>
 
-</div>
-
-
-<div class="section">
-    <h3>{{headingTitle}}</h3>
-    <div>
-        <ul type="square">
-            <li>Rocket</li>
-            <li>Test</li>
-            <li>First</li>
-            <li>Last</li>
-        </ul>
-    </div>
 </div>

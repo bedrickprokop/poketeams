@@ -15,7 +15,7 @@ public class Creature {
     private String name;
     private String url;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "creature_has_move",
             joinColumns = {@JoinColumn(name = "creature_id")},
             inverseJoinColumns = {@JoinColumn(name = "move_id")})

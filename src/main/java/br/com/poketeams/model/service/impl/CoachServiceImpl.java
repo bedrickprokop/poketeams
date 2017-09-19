@@ -29,7 +29,6 @@ public class CoachServiceImpl implements CoachService {
         if (null != coach) {
             return coach;
         }
-        //TODO adicionar mensagem de texto em arquivo de mensagens
         throw new ApplicationException("Entity not found",
                 Response.Status.NOT_FOUND.getStatusCode());
     }
@@ -44,7 +43,6 @@ public class CoachServiceImpl implements CoachService {
         if (null != coach.getId()) {
             return coachDao.update(coach);
         }
-        //TODO adicionar mensagem de texto em arquivo de mensagens
         throw new ApplicationException("Missing attribute to update",
                 Response.Status.BAD_REQUEST.getStatusCode());
     }
@@ -55,7 +53,6 @@ public class CoachServiceImpl implements CoachService {
         if (null != coach) {
             return coachDao.delete(coach);
         }
-        //TODO adicionar mensagem de texto em arquivo de mensagens
         throw new ApplicationException("Entity not found",
                 Response.Status.NOT_FOUND.getStatusCode());
     }

@@ -11,8 +11,4 @@ public interface MoveService {
     Move findOne(Long moveId);
 
     List<Move> findAll();
-
-    Move update(Move move);
-
-    Move delete(Long moveId);
 }

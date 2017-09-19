@@ -1,4 +1,5 @@
-app.controller('teamController', function ($scope, $routeParams, $location, teamService) {
+app.controller('teamController', function ($scope, $routeParams, $location, teamService,
+                                           creatureService) {
 
     $scope.headingTitle = "Maintain teams";
     $scope.emptyMessage = "No teams available /:";
@@ -34,4 +35,31 @@ app.controller('teamController', function ($scope, $routeParams, $location, team
     } else {
         $location.path("/");
     }
+
+    $scope.submit = function (isValid) {
+        if (isValid) {
+
+        }
+        console.log($scope.selectedCreatureList);
+    };
+
+    $scope.creatureList = [
+        {id: 1, name: "Java"},
+        {id: 2, name: "C"},
+        {id: 3, name: "C++"},
+        {id: 4, name: "AngularJs"},
+        {id: 5, name: "C#"},
+        {id: 6, name: "Pyton"},
+        {id: 7, name: "JQuery"},
+        {id: 8, name: "Android"},
+        {id: 9, name: "NodeJs"},
+        {id: 10, name: "ShellScript"},
+        {id: 11, name: ".NET"}
+    ];
+
+    $scope.beforeSelectItem = function (item) {
+        console.log("beforeSelectItem");
+        console.log($scope.selectedCreatureList.length);
+    };
+
 });
