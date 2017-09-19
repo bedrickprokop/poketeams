@@ -13,7 +13,6 @@ public class Coach {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //TODO adicionar mensagem de texto em arquivo de mensagens
     @NotNull(message = "Name cannot be empty")
     @Length(min = 3, max = 50, message = "Name should "
             + "be between 3 to 50 characters")

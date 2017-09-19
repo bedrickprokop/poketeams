@@ -1,6 +1,7 @@
 package br.com.poketeams.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.gson.annotations.SerializedName;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,13 +13,12 @@ public class Creature {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private String url;
 
-    @Column(name = "image_url")
-    private String imageUrl;
-    private String weight;
-    private String height;
-
-    @OneToMany(mappedBy = "creature", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(name = "creature_has_move",
+            joinColumns = {@JoinColumn(name = "creature_id")},
+            inverseJoinColumns = {@JoinColumn(name = "move_id")})
     private List<Move> moveList;
 
     @JsonIgnore
@@ -28,17 +28,17 @@ public class Creature {
     public Creature() {
     }
 
-    public Creature(String name, String imageUrl, String weight, String height, List<Move> moveList, List<Team> teamList) {
-        this(null, name, imageUrl, weight, height, moveList, teamList);
+    public Creature(String name, List<Move> moveList) {
+        this(name, moveList, null);
     }
 
-    public Creature(Long id, String name, String imageUrl, String weight, String height, List<Move> moveList,
-                    List<Team> teamList) {
+    public Creature(String name, List<Move> moveList, List<Team> teamList) {
+        this(null, name, moveList, teamList);
+    }
+
+    public Creature(Long id, String name, List<Move> moveList, List<Team> teamList) {
         this.id = id;
         this.name = name;
-        this.imageUrl = imageUrl;
-        this.weight = weight;
-        this.height = height;
         this.moveList = moveList;
         this.teamList = teamList;
     }
@@ -59,28 +59,12 @@ public class Creature {
         this.name = name;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getUrl() {
+        return url;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getWeight() {
-        return weight;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
-    }
-
-    public String getHeight() {
-        return height;
-    }
-
-    public void setHeight(String height) {
-        this.height = height;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public List<Move> getMoveList() {

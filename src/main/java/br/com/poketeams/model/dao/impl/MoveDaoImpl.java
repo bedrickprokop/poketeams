@@ -2,9 +2,11 @@ package br.com.poketeams.model.dao.impl;
 
 import br.com.poketeams.model.dao.MoveDao;
 import br.com.poketeams.model.entity.Move;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class MoveDaoImpl extends BaseDao<Move> implements MoveDao {
 
     @Override

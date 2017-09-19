@@ -2,9 +2,11 @@ package br.com.poketeams.model.dao.impl;
 
 import br.com.poketeams.model.dao.TeamDao;
 import br.com.poketeams.model.entity.Team;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class TeamDaoImpl extends BaseDao<Team> implements TeamDao {
 
     @Override

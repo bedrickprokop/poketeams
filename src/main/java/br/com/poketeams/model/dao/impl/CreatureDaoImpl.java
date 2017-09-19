@@ -2,9 +2,11 @@ package br.com.poketeams.model.dao.impl;
 
 import br.com.poketeams.model.dao.CreatureDao;
 import br.com.poketeams.model.entity.Creature;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class CreatureDaoImpl extends BaseDao<Creature> implements CreatureDao {
 
     @Override

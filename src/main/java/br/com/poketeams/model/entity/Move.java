@@ -1,6 +1,7 @@
 package br.com.poketeams.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.gson.annotations.SerializedName;
 
 import javax.persistence.*;
 
@@ -13,8 +14,7 @@ public class Move {
     private String name;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "creature_id")
+    @ManyToMany(mappedBy = "moveList")
     private Creature creature;
 
     public Move() {

@@ -27,6 +27,10 @@ public class Team {
     public Team() {
     }
 
+    public Team(String name, Coach coach) {
+        this(name, coach, null);
+    }
+
     public Team(String name, Coach coach, List<Creature> creatureList) {
         this(null, name, coach, creatureList);
     }
@@ -60,5 +64,13 @@ public class Team {
 
     public void setCoach(Coach coach) {
         this.coach = coach;
+    }
+
+    public List<Creature> getCreatureList() {
+        return creatureList;
+    }
+
+    public void setCreatureList(List<Creature> creatureList) {
+        this.creatureList = creatureList;
     }
 }

@@ -1,6 +1,5 @@
 package br.com.poketeams.model.service.impl;
 
-import br.com.poketeams.App;
 import br.com.poketeams.exception.ApplicationException;
 import br.com.poketeams.model.dao.CoachDao;
 import br.com.poketeams.model.entity.Coach;
