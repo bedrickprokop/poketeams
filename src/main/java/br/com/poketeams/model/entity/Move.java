@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.annotations.SerializedName;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Move {
@@ -15,7 +16,7 @@ public class Move {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "moveList")
-    private Creature creature;
+    private List<Creature> creatureList;
 
     public Move() {
     }
@@ -43,5 +44,13 @@ public class Move {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Creature> getCreatureList() {
+        return creatureList;
+    }
+
+    public void setCreatureList(List<Creature> creatureList) {
+        this.creatureList = creatureList;
     }
 }
