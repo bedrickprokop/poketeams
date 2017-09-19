@@ -27,7 +27,7 @@ public class SetupTask {
     @Inject
     private MoveService moveService;
 
-    private Integer numberOfCreatures = 10;
+    private Integer numberOfCreatures = 15;
     private Integer numberOfMoves = 20;
     private String baseUrl = "http://pokeapi.co/api/v2/";
 
