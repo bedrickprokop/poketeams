@@ -64,11 +64,10 @@ app.controller('teamController', function ($scope, $routeParams, $location, team
         }
     };
 
-    //$scope.updateCreatures = function () {
-    //    console.log($scope.selectedCreature);
-    //    console.log($scope.selectedCreatureList);
-    //}
-    //ng-change="updateCreatures()"
+    $scope.creatureChance = function () {
+        console.log($scope.selectedCreature);
+        //console.log($scope.selectedCreatureList);
+    }
 
     //$scope.updateMoves = function () {
     //    console.log($scope.selectedMoveList);
@@ -76,10 +75,9 @@ app.controller('teamController', function ($scope, $routeParams, $location, team
     //ng-change="updateMoves()"
 
     $scope.checkNewCreatureAdded = function () {
-        console.log("selectedCreature", $scope.selectedCreature);
-        console.log("selectedMoveList", $scope.selectedMoveList);
-
         if ($scope.selectedMoveList.length <= 4) {
+            $scope.selectedCreatureList.push($scope.selectedCreature);
+
             var creature = angular.copy($scope.selectedCreature);
             creature.moveList = [];
 
