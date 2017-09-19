@@ -5,7 +5,7 @@ app.factory('creatureService', function ($http) {
     }
 
     function findAll() {
-        return;
+        return $http.get('api/creature');
     }
 
     return {

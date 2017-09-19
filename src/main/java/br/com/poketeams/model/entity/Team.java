@@ -18,7 +18,7 @@ public class Team {
     @JoinColumn(name = "coach_id")
     private Coach coach;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "team_has_creature",
             joinColumns = {@JoinColumn(name = "team_id")},
             inverseJoinColumns = {@JoinColumn(name = "creature_id")})
