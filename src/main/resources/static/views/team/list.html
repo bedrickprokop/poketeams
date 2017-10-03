@@ -1,56 +1,72 @@
 <h3>{{headingTitle}}</h3>
 
-<div class="row">
+<form name="form" ng-submit="submit(form.$valid)" novalidate>
 
-    <div class="col-sm-12">
-        <form name="form" ng-submit="submit(form.$valid)" novalidate>
-            <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+    <!-- Team name -->
+    <div class="row">
+        <div class="col-sm-12">
+
             <div class="form-group">
                 <input placeholder="Team name" type="text" name="name" class="form-control" ng-model="entity.name"
                        required ng-required="true" ng-minlength="3" ng-maxlength="50">
             </div>
 
-            <div class="form-group">
-                <label>Choose your creatures</label>
-
-                <div class="form-group">
-                    <select ng-model="selectedCreature" ng-options="creature.name for creature in creatureList"
-                            ng-change="creatureChange()">
-                        <option value="">Select Creature</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Choose the moves for this creature</label>
-                <div class="form-group">
-                    <select multiple ng-model="selectedMoveList">
-                        <option ng-repeat="move in moveList"
-                                value="{{move}}">
-                            {{move.name}}
-                        </option>
-                    </select>
-                </div>
-            </div>
-
-            <button type="button" class="btn btn-success" ng-click="checkNewCreatureAdded()">Add Creature</button>
-
-            <div class="form-group">
-                <label>Your added creatures</label>
-
-                <div class="form-group">
-                    <select multiple>
-                        <option ng-repeat="c in selectedCreatureList">{{c.name}}</option>
-                    </select>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-success">{{!isEditing ? 'Create' : 'Update'}}</button>
-            <button type="button" class="btn btn-warning" ng-click="clear()">{{!isEditing ? 'Clear' : 'Cancel'}}
-            </button>
-        </form>
+        </div>
     </div>
 
+    <!-- Team creatures -->
+    <div class="row">
+
+        <!-- Select to choose creatures -->
+        <div class="col-sm-6">
+
+            <div class="form-group">
+                <label>Click on creature to select it*</label>
+
+                <select class="form-control"
+                        size="7"
+                        ng-options="creature as creature.name for creature in toSelectCreatureList track by creature.id"
+                        ng-model="selectedCreature"
+                        ng-click="selectCreature()">
+                </select>
+            </div>
+
+        </div>
+
+        <!-- Select for choosed creatures -->
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Click on creature to unselect it</label>
+
+                <select class="form-control"
+                        size="7"
+                        ng-options="creature as creature.name for creature in selectedCreatureList track by creature.id"
+                        ng-model="selectedCreature"
+                        ng-click="unselectCreature()">
+                </select>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <button type="submit" class="btn btn-success">
+                {{!isEditing ? 'Create' : 'Update'}}
+            </button>
+            <button type="button" class="btn btn-warning" ng-click="clear()">
+                {{!isEditing ? 'Clear' : 'Cancel'}}
+            </button>
+
+        </div>
+    </div>
+
+</form>
+
+
+<div class="row">
     <div class="col-sm-12" style="margin-top: 20px">
 
         <table class="table table-hover" ng-if="entityList.length > 0">
@@ -65,7 +81,7 @@
                 <td class="col-md-9">{{item.name}}</td>
 
                 <td class="col-md-3">
-                    <!--<a href="#/team/{{item.id}}" class="btn btn-warning">Teams</a>-->
+                    <a href="#/creatures/{{item.id}}" class="btn btn-warning">Details</a>
                     <button class="btn btn-info" ng-click="edit(item, true)">Edit</button>
                     <button class="btn btn-danger" ng-click="delete(item.id)">Delete</button>
                 </td>
@@ -76,5 +92,6 @@
         <span ng-if="entityList.length == 0">{{emptyMessage}}</span>
 
     </div>
-
 </div>
+
+
