@@ -58,9 +58,22 @@ app.controller('teamController', function ($scope, $routeParams, $location, team
 
     $scope.edit = function (entity, isEditing) {
         $scope.entity = angular.copy(entity);
-        $scope.toSelectCreatureList = angular.copy($scope.creatureList);
         $scope.selectedCreatureList = angular.copy($scope.entity.creatureList);
+        $scope.toSelectCreatureList = [];
 
+        //add creature that has not selected on the 'toSelectCreatureList' array
+        for (var i = 0, len1 = $scope.creatureList.length; i < len1; i++) {
+            var isAlreadySelected = false;
+            for (var j = 0, len2 = $scope.selectedCreatureList.length; j < len2; j++) {
+                if ($scope.creatureList[i].id == $scope.selectedCreatureList[j].id) {
+                    isAlreadySelected = true;
+                    break;
+                }
+            }
+            if(!isAlreadySelected) {
+                $scope.toSelectCreatureList.push($scope.creatureList[i]);
+            }
+        }
         $scope.isEditing = isEditing;
     }
 
