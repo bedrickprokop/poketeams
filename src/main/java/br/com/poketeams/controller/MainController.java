@@ -9,6 +9,6 @@ public class MainController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homepage() {
-        return "index" //testando;
+        return "index" //poketeams2;
     }
 }
